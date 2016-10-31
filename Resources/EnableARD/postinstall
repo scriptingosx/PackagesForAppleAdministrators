@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# EnableARD postinstall script
+
+PATH=/usr/bin:/bin:/usr/sbin:/sbin export PATH
+
+kickstart="/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart"
+
+if [ "$3" = "/" ]; then
+   "${kickstart}" -activate -configure -access -on \
+         -users localadmin -privs -all \
+         -restart -agent -menu
+fi

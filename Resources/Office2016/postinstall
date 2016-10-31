@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# installs MSOffice with installer choices
+
+PATH=/usr/bin:/bin:/usr/sbin:/sbin export PATH
+
+# get the path to the enclosing folder
+resources=$(dirname "$0")
+
+# run the installer with the choice changes
+installer -applyChoiceChangesXML "${resources}/choicechangesMSOffice.plist" \
+    -pkg "${resources}/Microsoft_Office_2016_15.26.0_160910_Installer.pkg" \
+    -target "/"

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<installer-gui-script minSpecVersion="1">
+    <title>InstallerUI Example</title>
+    <background file="shebang.png" uti="public/png" alignment="bottomleft" scaling="none"/>
+    <welcome file="Welcome.rtf" uti="public.rtf"/>
+    <readme file="Readme.rtf" uti="public.rtf"/>
+    <license file="License.rtf" uti="public.rtf"/>
+    <conclusion file="Conclusion.rtf" uti="public.rtf"/>
+    <pkg-ref id="com.example.InstallerUI" version="11.6.1" onConclusion="none">InstallerUI-1.0.pkg</pkg-ref>
+    <options customize="alllow" require-scripts="false"/>
+    <choices-outline>
+        <line choice="com.example.InstallerUI"/>
+    </choices-outline>
+    <choice id="com.example.InstallerUI" visible="true" title="InstallerUI" description="Just a sample file.">
+        <pkg-ref id="com.example.InstallerUI"/>
+    </choice>
+</installer-gui-script>

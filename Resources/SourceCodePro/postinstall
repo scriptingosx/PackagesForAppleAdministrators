@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# SourceCodePro postinstall script
+
+PATH=/usr/bin:/bin:/usr/sbin:/sbin export PATH
+
+# run only if installing on current system
+if [ "$3" = "/" ]; then 
+	# use atsutil to clear the font cache
+	atsutil databases -remove
+fi

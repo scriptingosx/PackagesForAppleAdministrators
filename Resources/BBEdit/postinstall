@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# postinstall script to load BBEdit Privileged helper tool
+
+PATH=/usr/bin:/bin:/usr/sbin:/sbin export PATH
+
+# launch helper tool Daemon if installing on boot volume
+if [ "$3" = "/" ]; then
+    launchDaemon="/Library/LaunchDaemons/com.barebones.authd.plist"
+    
+	# check if the launchd plist file exists
+	if [ -f "${launchDaemon}" ]; then
+		# finally, load the plist
+		launchctl load "${launchDaemon}"
+	else
+		echo "LaunchDaemon not found at path: ${launchDaemon}"
+	fi
+fi
