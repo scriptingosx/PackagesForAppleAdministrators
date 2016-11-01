@@ -1,0 +1,80 @@
+#!/bin/sh
+
+# postinstall script to install bbedit command line tools
+
+PATH=/usr/bin:/bin:/usr/sbin:/sbin export PATH
+
+target="$3"
+
+# the symlinks are created on the target volume
+binDir="${target}/usr/local/bin"
+manDir="${target}/usr/local/share/man/man1"
+# but point to the absolute path boot volume
+binSrcDir="/Applications/BBEdit.app/Contents/Helpers"
+manSrcDir="/Applications/BBEdit.app/Contents/Resources"
+
+# function to create a symlink
+symlink () { # srcdir destdir [srcItem] item
+    # even though the links point to the absolute path
+    # we need to check for existence on the target volume
+    if [ -e "${target}/$1/$3" ]; then
+        if [ ! -z "$4" ]; then
+            ln -sf "$1/$3" "$2/$4"
+        else
+            ln -sf "$1/$3" "$2/$3"
+        fi
+    else
+        echo "no file: $1/$3"
+    fi
+}
+
+# function to create a dir with mode
+createDir() { # path mode
+    if [ ! -d "$1" ]; then
+        mkdir -p "$1"
+        chmod "$2" "$1"
+    fi
+}
+
+# sanity check for root user
+if [ "$(whoami)" != "root" ]; then
+    echo "Run this script as root."
+    exit 1
+fi
+
+# create destination dirs if necessary
+createDir "${binDir}" 755
+createDir "${manDir}" 755
+
+# create bbedit links
+symlink "${binSrcDir}" "${binDir}" "bbedit_tool" "bbedit"
+symlink "${manSrcDir}" "${manDir}" "bbedit.1"
+
+# create links to other tools
+for item in bbfind bbdiff bbresults; do
+    symlink "${binSrcDir}" "${binDir}" "${item}"
+    symlink "${manSrcDir}" "${manDir}" "${item}.1"
+done
+
+# copy helper tool
+helperTool="${target}/Applications/BBEdit.app/Contents/Library/LaunchServices/com.barebones.authd"
+helperToolsDir="${target}/Library/PrivilegedHelperTools/"
+if [ -e "${helperTool}" ]; then
+    createDir "${helperToolsDir}" 1755
+    cp "${helperTool}" "${helperToolsDir}"
+    chown root:wheel "${helperToolsDir}/com.barebones.authd"
+    chmod 755 "${helperToolsDir}/com.barebones.authd"
+fi
+
+# launch helper tool Daemon if installing on boot volume
+if [ "${target}" = "/" ]; then
+    launchDaemon="/Library/LaunchDaemons/com.barebones.authd.plist"
+    
+	# check if the launchd plist file exists
+	if [ -f "${launchDaemon}" ]; then
+		# finally, load the plist
+		launchctl load "${launchDaemon}"
+	else
+		echo "LaunchDaemon not found at path: ${launchDaemon}"
+	fi
+fi

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<installer-gui-script minSpecVersion="1">
+    <title>BBEdit (example.com)</title>
+    <pkg-ref id="com.barebones.bbedit" version="11.6.2" onConclusion="none">BBEdit-11.6.2.pkg</pkg-ref>
+    <pkg-ref id="com.example.BBEditCLITools" version="11.6.2" onConclusion="none">BBEditCLITools-11.6.2.pkg</pkg-ref>
+    <options customize="always" require-scripts="false"/>
+    <volume-check>
+        <allowed-os-versions>
+            <os-version min="10.9.5"/>
+        </allowed-os-versions>
+    </volume-check>
+    <choices-outline>
+        <line choice="com.barebones.bbedit"/>
+        <line choice="com.example.BBEditCLITools"/>
+    </choices-outline>
+	<choice id="com.barebones.bbedit" visible="true" title="BBEdit" description="BBEdit Application">
+		<pkg-ref id="com.barebones.bbedit">
+			<must-close>
+				<app id="com.barebones.bbedit"/>
+			</must-close>
+		</pkg-ref>
+	</choice>
+    <choice id="com.example.BBEditCLITools" visible="true" title="Command Line Tools" description="Installs the BBEdit Command Line Tools">
+        <pkg-ref id="com.example.BBEditCLITools"/>
+    </choice>
+</installer-gui-script>
