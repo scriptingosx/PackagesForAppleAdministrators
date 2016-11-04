@@ -18,7 +18,7 @@ pkgbuild --root "${projectfolder}/payload" \
 		 "${projectfolder}/${pkgname}.pkg"
 
 # build the distribution package
-productbuild --package "${pkgname}.pkg" \
+productbuild --package "${projectfolder}/${pkgname}.pkg" \
 		"${projectfolder}/${pkgname}-${version}.pkg"
 		
 # remove temporary component package file

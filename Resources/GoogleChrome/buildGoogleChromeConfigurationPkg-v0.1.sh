@@ -1,7 +1,7 @@
 #!/bin/sh
 
-pkgname="EnableARD"
-version="1.0"
+pkgname="GoogleChromeConfiguration"
+version="0.1"
 identifier="com.example.${pkgname}"
 
 PATH=/usr/bin:/bin:/usr/sbin:/sbin export PATH
