@@ -1,0 +1,16 @@
+#!/bin/bash
+
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+# removes files installed by the BoringDesktop installers
+
+install_location="$3/Library/Desktop Pictures/"
+
+rm -f "$install_location/BoringRedDesktop.png"
+rm -f "$install_location/BoringBlueDesktop.png"
+
+# forget the installer package receipt
+
+if [[ "$3" == "/" ]]; then
+	pkgutil --forget "com.example.BoringDesktop"
+fi
