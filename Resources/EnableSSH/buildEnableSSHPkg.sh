@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 pkgname="EnableSSH"
 version="1.0"
