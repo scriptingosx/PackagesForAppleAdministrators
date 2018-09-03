@@ -13,7 +13,7 @@ if [ "$3" = "/" ] ; then
 else
     mkdir -p "$3${setupPath}"
     cp "$3${profilePath}" "$3${setupPath}${profileName}"
-    /bin/rm -f "$3${profilePath}.profileSetupDone"
+    /bin/rm -f "$3${setupPath}.profileSetupDone"
 fi
 
 settingsDir="Library/Application Support/Google/Chrome/"
