@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 pkgname="BoringDesktop"
 version="2.0"
 identifier="com.example.${pkgname}"
 install_location="/Library/Desktop Pictures/"
 
-PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin export PATH
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 projectfolder=$(dirname "$0")
 

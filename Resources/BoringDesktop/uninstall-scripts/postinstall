@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 # removes files installed by the BoringDesktop installers
 
