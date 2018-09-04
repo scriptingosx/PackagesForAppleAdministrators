@@ -4,7 +4,7 @@ pkgname="EnableSSH"
 version="1.0"
 identifier="com.example.${pkgname}"
 
-PATH=/usr/bin:/bin:/usr/sbin:/sbin export PATH
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 projectfolder=$(dirname "$0")
 
