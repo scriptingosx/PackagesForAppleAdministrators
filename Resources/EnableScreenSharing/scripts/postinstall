@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# EnableScreenSharing postinstall script
+
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin
+
+if [ "$3" = "/" ]; then
+   launchctl load -w /System/Library/LaunchDaemons/com.apple.screensharing.plist
+fi
