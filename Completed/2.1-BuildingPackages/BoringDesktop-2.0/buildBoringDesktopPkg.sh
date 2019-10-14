@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 pkgname="BoringDesktop"
 version="2.0"

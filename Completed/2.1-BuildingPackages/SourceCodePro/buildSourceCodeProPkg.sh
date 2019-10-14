@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 pkgname="SourceCodePro"
 version="2.030" # use the version from your download

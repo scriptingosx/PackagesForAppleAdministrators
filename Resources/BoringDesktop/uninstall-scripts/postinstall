@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
@@ -11,6 +11,6 @@ rm -f "$install_location/BoringBlueDesktop.png"
 
 # forget the installer package receipt
 
-if [[ "$3" == "/" ]]; then
+if [ "$3" = "/" ]; then
 	pkgutil --forget "com.example.BoringDesktop"
 fi

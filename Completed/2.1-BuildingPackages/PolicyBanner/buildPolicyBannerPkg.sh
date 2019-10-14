@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 pkgname="PolicyBanner"
 version="1.0"

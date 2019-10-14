@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 pkgname="BoringDesktop-Uninstall"
 version="2.0"

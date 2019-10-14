@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
 # EnableSSH postinstall script
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
-if [[ "$3" = "/" ]]; then
+if [ "$3" = "/" ]; then
    systemsetup -setRemoteLogin on
 fi
